@@ -9,7 +9,7 @@ import { HeroService } from './hero.service';
     styleUrls: ['styles.css']
 })
 
-export class HeroComponent implements OnInit{
+export class HeroesComponent implements OnInit{
     constructor(private heroService: HeroService){
     }
     /*英雄列表*/
