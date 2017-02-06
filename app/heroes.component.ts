@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router'
 
 import { Hero } from './types/hero';
 import { HeroService } from './hero.service';
@@ -10,13 +11,14 @@ import { HeroService } from './hero.service';
 })
 
 export class HeroComponent implements OnInit{
-    constructor(private heroService: HeroService){
-    }
+    constructor(
+      private heroService: HeroService,
+      private router: Router
+    ){}
     /*英雄列表*/
     heroes: Hero[];
     /*被选中的英雄*/
     selectedHero: Hero;
-    
     ngOnInit(){
         this.getHeroes();
     }
@@ -33,8 +35,10 @@ export class HeroComponent implements OnInit{
         this.heroService
             .getHeroes()
             .then((res) => {
-                console.log(res);
                 this.heroes = res;
             });
+    };
+    goToDetail = () =>{
+        this.router.navigate(['/detail', this.selectedHero.id])
     }
 }

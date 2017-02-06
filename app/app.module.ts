@@ -2,12 +2,13 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { CommonModule} from '@angular/common';
-import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { HeroComponent } from './heroes.component'
 import { HeroDetailComponent } from './hero-detail.component';
 import { DashboardComponent } from './dashboard.component';
+
+import { AppRoutingModule } from './app-routing.module'
 
 import { HeroService } from "./hero.service";
 
@@ -16,22 +17,7 @@ import { HeroService } from "./hero.service";
         BrowserModule,
         FormsModule,
         CommonModule,
-        RouterModule.forRoot([
-            {
-                path: '',
-                redirectTo: '/dashboard',
-                pathMatch: 'full'
-            },{
-                path: 'heroes',
-                component: HeroComponent
-            },{
-                path: 'dashboard',
-                component: DashboardComponent
-            },{
-                path: 'detail/:id',
-                component: HeroDetailComponent
-            }
-        ])
+        AppRoutingModule
     ],
     declarations: [
         AppComponent,
